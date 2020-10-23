@@ -1,0 +1,160 @@
+<div class="container">
+  <h3>Billing Address</h3>
+  <hr />
+  <form [formGroup]="billForm" #billingForm="ngForm" class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName"
+          placeholder="First Name"
+          [ngClass]="{
+            'is-invalid': f.firstName.errors && f.firstName.touched
+          }"
+          required
+        />
+        <div *ngIf="f.firstName.errors?.required" class="invalid-feedback">
+          Enter the First Name
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName"
+          placeholder="Last Name"
+          [ngClass]="{ 'is-invalid': f.lastName.errors && f.lastName.touched }"
+          required
+        />
+        <div *ngIf="f.lastName.errors?.required" class="invalid-feedback">
+          Enter the Last Name
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="buildingNo"
+          formControlName="buildingNo"
+          placeholder="Building No., Apartment Name"
+          [ngClass]="{
+            'is-invalid': f.buildingNo.errors && f.buildingNo.touched
+          }"
+          required
+        />
+        <div *ngIf="f.buildingNo.errors?.required" class="invalid-feedback">
+          Enter the Building No., Apartment Name
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="streetName"
+          formControlName="streetName"
+          placeholder="Street Name"
+          [ngClass]="{
+            'is-invalid': f.streetName.errors && f.streetName.touched
+          }"
+          required
+        />
+        <div *ngIf="f.streetName.errors?.required" class="invalid-feedback">
+          Enter the Street Name
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          formControlName="city"
+          placeholder="City"
+          [ngClass]="{ 'is-invalid': f.city.errors && f.city.touched }"
+          required
+        />
+        <div *ngIf="f.city.errors?.required" class="invalid-feedback">
+          Enter the City
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="state"
+          formControlName="state"
+          placeholder="State"
+          [ngClass]="{ 'is-invalid': f.state.errors && f.state.touched }"
+          required
+        />
+        <div *ngIf="f.state.errors?.required" class="invalid-feedback">
+          Enter the State
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="zipCode"
+          formControlName="zipCode"
+          placeholder="Zip Code"
+          [ngClass]="{ 'is-invalid': f.zipCode.errors && f.zipCode.touched }"
+          required
+        />
+        <div *ngIf="f.zipCode.errors?.required" class="invalid-feedback">
+          Enter the Zip Code
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="landmark"
+          formControlName="landmark"
+          placeholder="Landmark"
+          [ngClass]="{ 'is-invalid': f.landmark.errors && f.landmark.touched }"
+          required
+        />
+        <div *ngIf="f.landmark.errors?.required" class="invalid-feedback">
+          Enter the Landmark
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input
+          type="number"
+          class="form-control"
+          id="phoneNo"
+          formControlName="phoneNo"
+          placeholder="Phone No."
+          [ngClass]="{ 'is-invalid': f.phoneNo.errors && f.phoneNo.touched }"
+          required
+        />
+      <div *ngIf="f.phoneNo.errors?.required" class="invalid-feedback">
+        Enter the Phone Number
+      </div>
+      <div *ngIf="f.phoneNo.errors?.pattern" class="invalid-feedback">
+        Enter valid Phone number
+      </div>
+    </div>
+    </div>
+
+    <hr />
+    <div class="checkout">
+      <button class="btn btn-success" [disabled]="billingForm.invalid" type="submit" >Check Out</button>
+    </div>
+  </form>
+</div>

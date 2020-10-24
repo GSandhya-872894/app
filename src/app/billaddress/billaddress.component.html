@@ -1,7 +1,13 @@
-<div class="container">
+<div class="container main">
   <h3>Billing Address</h3>
   <hr />
-  <form [formGroup]="billForm" #billingForm="ngForm" class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="billForm"
+    #billingForm="ngForm"
+    class="needs-validation"
+    novalidate
+    (ngSubmit)="onSubmit()"
+  >
     <div class="row">
       <div class="col-md-6 mb-3">
         <input
@@ -143,18 +149,27 @@
           [ngClass]="{ 'is-invalid': f.phoneNo.errors && f.phoneNo.touched }"
           required
         />
-      <div *ngIf="f.phoneNo.errors?.required" class="invalid-feedback">
-        Enter the Phone Number
+        <div *ngIf="f.phoneNo.errors?.required" class="invalid-feedback">
+          Enter the Phone Number
+        </div>
+        <div *ngIf="f.phoneNo.errors?.pattern" class="invalid-feedback">
+          Enter valid Phone number
+        </div>
       </div>
-      <div *ngIf="f.phoneNo.errors?.pattern" class="invalid-feedback">
-        Enter valid Phone number
-      </div>
-    </div>
     </div>
 
     <hr />
-    <div class="checkout">
-      <button class="btn btn-success" [disabled]="billingForm.invalid" type="submit" >Check Out</button>
-    </div>
+    <div class="container button">
+      <div class="snippet-content" fxLayout="column" fxLayoutAlign="space-around center" >
+          <button class="sbmt-btn" [disabled]="billingForm.invalid"
+                  (click)="onCheckOut()">
+            <div class="sbmt-btn-txt"
+                 [@buttonTextStateTrigger]="buttonTextState"
+                 (@buttonTextStateTrigger.done)="buttonTextTransitioned($event)">
+              {{ buttonText }}
+            </div>
+          </button>
+        </div>
+      </div>  
   </form>
 </div>

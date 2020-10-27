@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BilladdressComponent } from './billaddress/billaddress.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BilladdressComponent
+    BilladdressComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

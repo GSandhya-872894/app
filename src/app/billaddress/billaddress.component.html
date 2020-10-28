@@ -22,7 +22,20 @@
           required
         />
         <div *ngIf="f.firstName.errors?.required" class="invalid-feedback">
-          Enter the First Name
+          Please enter the First Name
+        </div>
+        <div *ngIf="f.firstName.errors?.maxlength" class="invalid-feedback">
+          Please enter a max of [{{
+            f.firstName.errors?.maxlength.requiredLength
+          }}] characters.
+        </div>
+        <div *ngIf="f.firstName.errors?.minlength" class="invalid-feedback">
+          Please enter a min of [{{
+            f.firstName.errors?.minlength.requiredLength
+          }}] characters.
+        </div>
+        <div *ngIf="f.firstName.errors?.pattern" class="invalid-feedback">
+          This field accepts only Alphabetical characters and spaces only.
         </div>
       </div>
       <div class="col-md-6 mb-3">
@@ -36,7 +49,20 @@
           required
         />
         <div *ngIf="f.lastName.errors?.required" class="invalid-feedback">
-          Enter the Last Name
+          Please enter the Last Name
+        </div>
+        <div *ngIf="f.lastName.errors?.maxlength" class="invalid-feedback">
+          Please enter a max of [{{
+            f.lastName.errors?.maxlength.requiredLength
+          }}] characters.
+        </div>
+        <div *ngIf="f.lastName.errors?.minlength" class="invalid-feedback">
+          Please enter a min of [{{
+            f.lastName.errors?.minlength.requiredLength
+          }}] characters.
+        </div>
+        <div *ngIf="f.lastName.errors?.pattern" class="invalid-feedback">
+          This field accepts only Alphabetical characters and spaces only.
         </div>
       </div>
     </div>
@@ -55,7 +81,12 @@
           required
         />
         <div *ngIf="f.buildingNo.errors?.required" class="invalid-feedback">
-          Enter the Building No., Apartment Name
+          Please enter the Building No., Apartment Name
+        </div>
+        <div *ngIf="f.buildingNo.errors?.maxlength" class="invalid-feedback">
+          Please enter a max of [{{
+            f.buildingNo.errors?.maxlength.requiredLength
+          }}] characters.
         </div>
       </div>
       <div class="col-md-6 mb-3">
@@ -71,7 +102,12 @@
           required
         />
         <div *ngIf="f.streetName.errors?.required" class="invalid-feedback">
-          Enter the Street Name
+          Please enter the Street Name
+        </div>
+        <div *ngIf="f.buildingNo.errors?.maxlength" class="invalid-feedback">
+          Please enter a max of [{{
+            f.buildingNo.errors?.maxlength.requiredLength
+          }}] characters.
         </div>
       </div>
     </div>
@@ -88,7 +124,11 @@
           required
         />
         <div *ngIf="f.city.errors?.required" class="invalid-feedback">
-          Enter the City
+          Please enter the City Name
+        </div>
+        <div *ngIf="f.city.errors?.maxlength" class="invalid-feedback">
+          Please enter a max of [{{ f.city.errors?.maxlength.requiredLength }}]
+          characters.
         </div>
       </div>
       <div class="col-md-6 mb-3">
@@ -102,7 +142,15 @@
           required
         />
         <div *ngIf="f.state.errors?.required" class="invalid-feedback">
-          Enter the State
+          Please enter the State Name
+        </div>
+        <div *ngIf="f.state.errors?.minlength" class="invalid-feedback">
+          Please enter a min of [{{ f.state.errors?.minlength.requiredLength }}]
+          characters.
+        </div>
+        <div *ngIf="f.state.errors?.maxlength" class="invalid-feedback">
+          Please enter a max of [{{ f.state.errors?.maxlength.requiredLength }}]
+          characters.
         </div>
       </div>
     </div>
@@ -110,7 +158,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <input
-          type="number"
+          type="text"
           class="form-control"
           id="zipCode"
           formControlName="zipCode"
@@ -119,7 +167,17 @@
           required
         />
         <div *ngIf="f.zipCode.errors?.required" class="invalid-feedback">
-          Enter the Zip Code
+          Please enter the Zip Code
+        </div>
+        <div
+          *ngIf="
+            f.zipCode.errors?.maxlength ||
+            f.zipCode.errors?.minlength ||
+            f.zipCode.errors?.pattern
+          "
+          class="invalid-feedback"
+        >
+          Please enter only valid [6] digited Zip Code
         </div>
       </div>
       <div class="col-md-6 mb-3">
@@ -141,7 +199,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <input
-          type="number"
+          type="text"
           class="form-control"
           id="phoneNo"
           formControlName="phoneNo"
@@ -150,26 +208,42 @@
           required
         />
         <div *ngIf="f.phoneNo.errors?.required" class="invalid-feedback">
-          Enter the Phone Number
+          Please enter the Phone Number
         </div>
-        <div *ngIf="f.phoneNo.errors?.pattern" class="invalid-feedback">
-          Enter valid Phone number
+        <div
+          *ngIf="
+            f.phoneNo.errors?.maxlength ||
+            f.phoneNo.errors?.minlength ||
+            f.phoneNo.errors?.pattern
+          "
+          class="invalid-feedback"
+        >
+          Please enter only valid [10] digit Phone Number
         </div>
       </div>
     </div>
 
     <hr />
     <div class="container button">
-      <div class="snippet-content" fxLayout="column" fxLayoutAlign="space-around center" >
-          <button class="sbmt-btn" [disabled]="billingForm.invalid"
-                  (click)="onCheckOut()">
-            <div class="sbmt-btn-txt"
-                 [@buttonTextStateTrigger]="buttonTextState"
-                 (@buttonTextStateTrigger.done)="buttonTextTransitioned($event)">
-              {{ buttonText }}
-            </div>
-          </button>
-        </div>
-      </div>  
+      <div
+        class="snippet-content"
+        fxLayout="column"
+        fxLayoutAlign="space-around center"
+      >
+        <button
+          class="sbmt-btn"
+          [disabled]="billingForm.invalid"
+          (click)="onCheckOut()"
+        >
+          <div
+            class="sbmt-btn-txt"
+            [@buttonTextStateTrigger]="buttonTextState"
+            (@buttonTextStateTrigger.done)="buttonTextTransitioned($event)"
+          >
+            {{ buttonText }}
+          </div>
+        </button>
+      </div>
+    </div>
   </form>
 </div>

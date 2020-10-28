@@ -32,15 +32,68 @@ export class BilladdressComponent implements OnInit {
   
   ngOnInit(): void {
     this.billForm = this.formBuilder.group({
-      firstName : ['', Validators.required],
-      lastName : ['', Validators.required],
-      buildingNo : ['', Validators.required],
-      streetName : ['', Validators.required],
-      city : ['', Validators.required],
-      state : ['', Validators.required],
-      zipCode : ['', Validators.required],
-      landmark : ['', Validators.required],
-      phoneNo : ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+      firstName : ['',
+       [
+         Validators.required, 
+         Validators.minLength(5), 
+         Validators.maxLength(20),
+         Validators.pattern('^[a-zA-Z ]*$')
+        ]
+      ],
+      lastName : ['', 
+        [
+          Validators.required, 
+          Validators.minLength(5), 
+          Validators.maxLength(20),
+          Validators.pattern('^[a-zA-Z ]*$')
+        ]
+      ],
+      buildingNo : ['', 
+        [
+          Validators.required,
+          Validators.maxLength(30)
+        ]
+      ],
+      streetName : ['', 
+        [
+          Validators.required, 
+          Validators.maxLength(30)
+        ]
+      ],
+      city : ['', 
+        [
+          Validators.required, 
+          Validators.maxLength(25)
+        ]
+      ],
+      state : ['', 
+        [
+          Validators.required,
+          Validators.minLength(2), 
+          Validators.maxLength(20),
+        ]
+      ],
+      zipCode : ['', 
+        [
+          Validators.required, 
+          Validators.minLength(6), 
+          Validators.maxLength(6), 
+          Validators.pattern('^[1-9]*$')
+        ]
+      ],
+      landmark : ['', 
+        [
+          Validators.required
+        ]
+      ],
+      phoneNo : ['', 
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10), 
+          Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")
+        ]
+      ]
     })
   }
 

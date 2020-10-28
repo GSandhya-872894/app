@@ -76,7 +76,7 @@ export class BilladdressComponent implements OnInit {
       zipCode : ['', 
         [
           Validators.required, 
-          Validators.minLength(6), 
+          Validators.minLength(6),
           Validators.maxLength(6), 
           Validators.pattern('^[1-9]*$')
         ]

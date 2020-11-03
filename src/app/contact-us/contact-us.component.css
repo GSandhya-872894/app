@@ -1,0 +1,19 @@
+.card{
+    position: relative;
+} 
+.card-img-overlay{
+    margin: 200px 0;
+    text-align: center;
+} 
+.card-img-overlay h4{
+    font-size: 40px;
+}
+.card-img-overlay p{
+    font-size: 16px;
+}
+.row{
+    margin-top: 25px;
+}
+.map{
+    margin-top: 25px;
+}
